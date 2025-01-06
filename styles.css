@@ -1,0 +1,1019 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --border-color: #E5E7EB;
+    --iphone-aspect-ratio: calc(693 / 320);
+    --brand-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --brand-color: #722DAA;
+    --brand-rgb: 114, 45, 170;
+}
+
+body {
+    margin: 0;
+    padding: 32px 32px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 20px;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* iPhone Mockup Styles */
+.product-ui {
+    width: min(320px, 90vw);
+    height: min(693px, calc(100vh - 200px));
+    background: white;
+    position: relative;
+    border-radius: min(50px, 12.8vw);
+    overflow: hidden;
+    box-shadow:
+        0 0 0 min(1px, 0.5vw) rgba(234, 232, 232, 0.9),
+        0 0 0 min(14px, 3.5vw) rgba(var(--brand-rgb), 0.15),
+        0 0 0 min(14.5px, 3.6vw) rgba(241, 241, 241, 0.3),
+        0 0 0 min(15px, 3.7vw) rgba(150, 150, 150, 0.2),
+        0 0 34px rgba(0, 0, 0, 0.5);
+    font-family: var(--brand-font);
+
+    /* Ensure all text elements inherit the brand font */
+    *, 
+    *::before, 
+    *::after {
+        font-family: inherit;
+    }
+}
+/* App Content Container */
+.app-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+
+.app-header {
+    background: var(--brand-color);
+    color: white;
+    padding-top: 4px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 12px;
+}
+
+.header-left-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px; /* Gap between back button and logo */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Gap between logo and brand name */
+}
+
+.back-btn, .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.back-btn i {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+#header-logo {
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+#header-brand-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+}
+
+.menu-btn {
+    margin-left: auto;
+}
+
+.main-content {
+    padding: 16px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.main-content h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.main-content .subtitle {
+    text-align: center;
+    color: #666;
+    margin: 0 0 16px 0;
+    font-size: 14px;
+}
+
+.bank-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.bank-logo {
+    width: 20px;
+    height: 20px;
+    object-fit: fill;
+}
+
+.account-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.account-option {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 0;
+}
+
+.account-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.account-type {
+    font-weight: 500;
+    margin-bottom: 4px;
+    font-size: 15px;
+}
+
+.account-number {
+    color: #666;
+    font-size: 13px;
+}
+
+.link-more {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--brand-color);
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.link-more i {
+    width: 16px;
+    height: 16px;
+    stroke-width: 1;
+}
+
+.proceed-button {
+    width: 100%;
+    height: 48px;
+    background: var(--brand-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.powered-by {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #676767;
+    font-size: 12px;
+}
+
+#powered-logo {
+    height: 16px;
+    width: auto;
+}
+
+/* Bottom drawer styles */
+.bottom-drawer {
+    background: white;
+    padding: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    margin-top: auto;
+    position: relative;
+    box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.06);
+}
+
+.scroll-indicator {
+    position: absolute;
+    top: -32px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    color: var(--brand-color);
+    background: rgba(var(--brand-rgb), 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.scroll-indicator i {
+    width: 12px;
+    height: 12px;
+    stroke-width: 1;
+    color: var(--brand-color);
+}
+
+/* Custom scrollbar */
+.app-content::-webkit-scrollbar,
+.main-content::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
+
+/* Customization Controls Styles */
+.customization-controls {
+    width: 100%;
+    background: white;
+    border-radius: 16px;
+    font-family: 'Inter', sans-serif;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    order: -1;
+    box-sizing: border-box;
+    position: relative;
+    animation: slideFromTop 0.8s ease-out;
+    will-change: transform, opacity;
+}
+
+.controls-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* Simplified grid layout */
+.controls-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* Two columns by default */
+    gap: 32px;
+}
+
+/* Add media query for smaller viewports */
+@media (max-width: 400px) {
+    .controls-grid {
+        grid-template-columns: 1fr;  /* Single column on smaller screens */
+    }
+
+    .customization-controls {
+        padding: 16px;  /* Slightly reduce padding on mobile */
+    }
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+
+.control-group label {
+    font-size: 14px;
+    color: #111;
+    font-weight: 500;
+}
+
+.upload-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px;
+    height: 40px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #111;
+    background: white;
+    transition: background-color 0.2s;
+    box-sizing: border-box;
+}
+
+.upload-button i {
+    width: 16px;
+    height: 16px;
+}
+
+.upload-button:hover {
+    background-color: #F9FAFB;
+    border-color: #D1D5DB;
+}
+
+.color-input-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    height: 40px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    background: white;
+    box-sizing: border-box;
+}
+
+.color-input-wrapper input[type="color"] {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.color-input-wrapper input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.color-input-wrapper input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 4px;
+}
+
+.color-value {
+    font-size: 14px;
+    color: #111;
+    font-family: 'DM Sans', monospace;
+}
+
+.control-group input[type="text"] {
+    width: 100%;
+    padding: 8px 8px;
+    height: 40px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #111;
+    box-sizing: border-box;
+}
+
+.control-group input[type="text"]::placeholder {
+    color: #9CA3AF;
+}
+
+/* Custom scrollbar for the app content */
+.app-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.app-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.app-content::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper select {
+    appearance: none;
+    padding-right: 30px; /* Make room for the icon */
+}
+
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    transition: transform 0.2s ease;
+}
+
+/* Add this new style for when the select is focused/open */
+.select-wrapper select:focus + ::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.font-select {
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    padding-right: 36px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #111;
+    background: white;
+    cursor: pointer;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.font-select:hover {
+    border-color: #D1D5DB;
+}
+
+.font-select:focus {
+    outline: none;
+    border-color: var(--brand-color);
+}
+
+/* Style for the placeholder option */
+.font-select option[value=""] {
+    color: #6B7280;
+}
+
+/* Update checkbox styles for Material Icons */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background-color: white;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+/* Checked state */
+.checkbox-container input[type="checkbox"]:checked ~ .checkbox-checkmark {
+    background-color: var(--brand-color);
+    border-color: var(--brand-color);
+}
+
+/* Checkmark icon */
+.checkbox-checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container input[type="checkbox"]:checked ~ .checkbox-checkmark:after {
+    display: block;
+}
+
+/* File selected button hover */
+.file-selected-button:hover {
+    border-color: #D1D5DB;
+}
+
+/* Color input wrapper hover */
+.color-input-wrapper:hover {
+    border-color: #D1D5DB;
+}
+
+/* Font select hover */
+.font-select:hover {
+    border-color: #D1D5DB;
+}
+
+/* Brand name input hover */
+.control-group input[type="text"]:hover {
+    border-color: #D1D5DB;
+}
+
+/* Link more accounts button hover */
+.link-more:hover {
+    background-color: var(--brand-color);
+    opacity: 0.9;
+    border-radius: 8px;
+}
+
+/* Account option hover */
+.account-option:hover {
+    border-color: var(--brand-color);
+}
+/* Header buttons hover */
+.back-btn:hover, .menu-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+}
+
+/* Proceed button hover */
+.proceed-button:hover {
+    opacity: 0.9;
+}
+
+/* Replace button hover (for file upload) */
+.replace-button:hover {
+    color: #EF4444;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-radius: 4px;
+}
+
+.upload-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #111;
+}
+
+.remove-file {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #EF4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-file:hover {
+    color: #DC2626;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-radius: 4px;
+}
+
+.remove-file i {
+    width: 16px;
+    height: 16px;
+}
+
+.main-content .link-more:hover {
+    background-color: rgba(var(--brand-rgb), 0.1);
+    color: var(--brand-color);
+    border-radius: 8px;
+}
+
+/* Add these keyframe animations */
+@keyframes slideFromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromBottom {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Add animation properties to the containers */
+.customization-controls {
+    animation: slideFromTop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-ui {
+    animation: slideFromBottom 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optional: Add will-change to optimize performance */
+.customization-controls,
+.product-ui {
+    will-change: transform, opacity;
+}
+
+.accounts-counter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.accounts-counter .pill {
+    background-color: #F3F4F6;
+    color: #4B5563;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 500;
+    overflow: hidden;
+}
+
+/* Animation for the number changes */
+@keyframes slideFromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.pill-number-animate {
+    display: inline-block;
+    animation: slideFromTop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Update animations */
+@keyframes slideFromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromBottom {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-from-top {
+    animation: slideFromTop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-from-bottom {
+    animation: slideFromBottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pill-number-animate {
+    display: inline-block;
+}
+
+.discovered-accounts {
+    text-align: center;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #4B5563;
+    font-size: 12px;
+    background-color: rgba(var(--brand-rgb), 0.05);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.discovered-accounts .phone-number {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--brand-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.edit-phone {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--brand-color);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.bank-section {
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+/* Adjust bank info spacing */
+.bank-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+/* Adjust account options spacing */
+.account-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.header-right-group {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.lang-btn, .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.lang-btn i, .menu-btn i {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+/* Add hover effect */
+.lang-btn:hover, .menu-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+}
+
+.language-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1000;
+}
+
+.language-modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 16px 16px 0 0;
+    padding: 20px;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-modal i {
+    width: 20px;
+    height: 20px;
+}
+
+.modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lang-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: none;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.lang-option:hover {
+    background: #F9FAFB;
+}
+
+.lang-option .selected-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--brand-color);
+    display: none;
+}
+
+.lang-option[data-selected="true"] {
+    border-color: var(--brand-color);
+    background: rgba(var(--brand-rgb), 0.05);
+}
+
+.lang-option[data-selected="true"] .selected-icon {
+    display: block;
+}
+
+.lang-dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 4px;
+    display: none;
+    min-width: 140px;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.lang-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
+}
+
+.lang-option:hover {
+    background: #F9FAFB;
+}
+
+.lang-option .selected-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--brand-color);
+    display: none;
+}
+
+.lang-option[data-selected="true"] .selected-icon {
+    display: block;
+}
+
+.bank-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bank-details {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Gap between bank logo and name */
+}
+
+.select-all {
+    color: var(--brand-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px; /* Optional: Add margin to separate from bank name */
+    transition: opacity 0.2s; /* Optional: Add a transition for hover effect */
+    text-decoration: underline;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.select-all:hover {
+    opacity: 0.9;
