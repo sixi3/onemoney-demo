@@ -84,15 +84,14 @@ body {
 .header-left-group {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 4px; /* Gap between back button and logo */
+    gap: 4px;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px; /* Gap between logo and brand name */
+    gap: 8px;
+    transition: margin-left 0.3s ease;
 }
 
 .back-btn, .menu-btn {
@@ -105,6 +104,8 @@ body {
     padding: 8px;
     cursor: pointer;
     line-height: 1;
+    transition: all 0.3s ease;
+    width: 36px;
 }
 
 .back-btn i {
@@ -133,6 +134,8 @@ body {
 .main-content {
     padding: 16px;
     flex: 1;
+    position: relative;
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
@@ -143,7 +146,7 @@ body {
     margin: 0 0 8px 0;
 }
 
-.main-content .subtitle {
+.main-content p {
     text-align: center;
     color: #666;
     margin: 0 0 16px 0;
@@ -270,7 +273,8 @@ body {
     width: 20px;
     height: 20px;
     color: var(--brand-color);
-    background: rgba(var(--brand-rgb), 0.1);
+    background: white;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1017,4 +1021,181 @@ body {
 
 .select-all:hover {
     opacity: 0.8;
+}
+
+/* Screen Management */
+.screen {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+    left: 0;
+    right: 0;
+}
+
+.screen[data-active="true"] {
+    position: relative;
+    opacity: 1;
+    pointer-events: all;
+    display: block;
+}
+
+/* Specific screen styles */
+#mobile-input-screen {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+#account-selection-screen {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content container */
+.main-content {
+    padding: 16px;
+    flex: 1;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+}
+
+/* Add these keyframe animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* Add these classes for animations */
+.slide-in-right {
+    animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-out-right {
+    animation: slideOutRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-out-left {
+    animation: slideOutLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Mobile Input Styles */
+.mobile-input-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.phone-input-group, .otp-input-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 12px 12px 8px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    background: white;
+}
+
+.country-code {
+    color: #111;
+    font-weight: 600;
+    padding: 4px 8px 4px 0px;
+    border-right: 1px solid #E5E7EB;
+}
+
+#phone-input, #otp-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 4px 8px 4px 0px;
+    width: 100%;
+}
+
+.input-hint {
+    color: #6B7280;
+    font-size: 12px;
+    margin: 0;
+}
+
+/* When back button is hidden, adjust logo container position */
+.back-btn[style*="hidden"] + .logo-container {
+    margin-left: -36px;
+}
+
+.otp-input-group {
+    display: none;
+    opacity: 0;
+    margin-top: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(10px);
+}
+
+.otp-input-group.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-right {
+    animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-out-right {
+    animation: slideOutRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-out-left {
+    animation: slideOutLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }

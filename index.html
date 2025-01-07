@@ -157,113 +157,139 @@
                         </div>
                     </header>
     
+                    <!-- Main content with screens -->
                     <main class="main-content">
-                        <div class="discovered-accounts">
-                            <span>Showing 4 accounts discovered for:</span>
-                            <span class="phone-number">
-                                +91 XXXXXX3210
-                                <button class="edit-phone">edit</button>
-                            </span>
+                        <!-- Screen 1: Mobile Number Input -->
+                        <div class="screen" id="mobile-input-screen" data-active="true">
+                            <h1>Link all your accounts</h1>
+                            <p>Enter your mobile number to discover linked accounts</p>
+                            
+                            <div class="phone-input-group">
+                                <div class="country-code">+91</div>
+                                <input type="tel" 
+                                       id="phone-input" 
+                                       placeholder="Enter mobile number"
+                                       maxlength="10"
+                                       pattern="[0-9]*">
+                            </div>
+                            <div class="otp-input-group">
+                                <input type="tel" 
+                                       id="otp-input" 
+                                       placeholder="Enter OTP"
+                                       maxlength="6"
+                                       pattern="[0-9]*">
+                            </div>
                         </div>
-                        <h1 id="page-title">Select Accounts</h1>
-                        <p class="subtitle">Select the accounts you want to link:</p>
 
-                        <!-- Move the accounts counter here -->
-                        <div class="accounts-counter">
-                            <div class="pill">0 accounts selected</div>
-                        </div>
+                        <!-- Screen 2: Account Selection (your existing screen content) -->
+                        <div class="screen" id="account-selection-screen" data-active="false">
+                            <div class="discovered-accounts">
+                                <span>Showing 4 accounts discovered for:</span>
+                                <span class="phone-number">
+                                    +91 XXXXXX3210
+                                    <button class="edit-phone">edit</button>
+                                </span>
+                            </div>
+                            <h1 id="page-title">Select Accounts</h1>
+                            <p class="subtitle">Select the accounts you want to link:</p>
 
-                        <!-- Wrap each bank's content in a container -->
-                        <div class="bank-section">
-                            <div class="bank-info">
-                                <div class="header-left-group">
-                                    <img src="hdfc-logo.png" alt="HDFC Bank" class="bank-logo">
-                                    <span>HDFC Bank</span>
+                            <!-- Move the accounts counter here -->
+                            <div class="accounts-counter">
+                                <div class="pill">0 accounts selected</div>
+                            </div>
+
+                            <!-- Wrap each bank's content in a container -->
+                            <div class="bank-section">
+                                <div class="bank-info">
+                                    <div class="header-left-group">
+                                        <img src="hdfc-logo.png" alt="HDFC Bank" class="bank-logo">
+                                        <span>HDFC Bank</span>
+                                    </div>
+                                    <button class="select-all">Select All</button> <!-- Added Select All button -->
                                 </div>
-                                <button class="select-all">Select All</button> <!-- Added Select All button -->
-                            </div>
-                            <div class="account-options">
-                                <label class="account-option">
-                                    <div class="checkbox-container">
-                                        <input type="checkbox" name="account" checked>
-                                        <span class="checkbox-checkmark">
-                                            <span class="material-icons unchecked"></span>
-                                            <span class="material-icons checked"></span>
-                                        </span>
-                                    </div>
-                                    <div class="account-details">
-                                        <div class="account-type">Savings Account</div>
-                                        <div class="account-number">Account No: XXXXXXXX4001</div>
-                                    </div>
-                                </label>
-    
-                                <label class="account-option">
-                                    <div class="checkbox-container">
-                                        <input type="checkbox" name="account" checked>
-                                        <span class="checkbox-checkmark">
-                                            <span class="material-icons unchecked"></span>
-                                            <span class="material-icons checked"></span>
-                                        </span>
-                                    </div>
-                                    <div class="account-details">
-                                        <div class="account-type">Current Account</div>
-                                        <div class="account-number">Account No: XXXXXXXX4651</div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-    
-                        <div class="bank-section">
-                            <div class="bank-info">
-                                <div class="header-left-group">
-                                    <img src="icici-logo.png" alt="ICICI Bank" class="bank-logo">
-                                    <span>ICICI Bank</span>
+                                <div class="account-options">
+                                    <label class="account-option">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" name="account" checked>
+                                            <span class="checkbox-checkmark">
+                                                <span class="material-icons unchecked"></span>
+                                                <span class="material-icons checked"></span>
+                                            </span>
+                                        </div>
+                                        <div class="account-details">
+                                            <div class="account-type">Savings Account</div>
+                                            <div class="account-number">Account No: XXXXXXXX4001</div>
+                                        </div>
+                                    </label>
+        
+                                    <label class="account-option">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" name="account" checked>
+                                            <span class="checkbox-checkmark">
+                                                <span class="material-icons unchecked"></span>
+                                                <span class="material-icons checked"></span>
+                                            </span>
+                                        </div>
+                                        <div class="account-details">
+                                            <div class="account-type">Current Account</div>
+                                            <div class="account-number">Account No: XXXXXXXX4651</div>
+                                        </div>
+                                    </label>
                                 </div>
-                                <button class="select-all">Select All</button> <!-- Added Select All button -->
                             </div>
-                            <div class="account-options">
-                                <label class="account-option">
-                                    <div class="checkbox-container">
-                                        <input type="checkbox" name="account" checked>
-                                        <span class="checkbox-checkmark">
-                                            <span class="material-icons unchecked"></span>
-                                            <span class="material-icons checked"></span>
-                                        </span>
+        
+                            <div class="bank-section">
+                                <div class="bank-info">
+                                    <div class="header-left-group">
+                                        <img src="icici-logo.png" alt="ICICI Bank" class="bank-logo">
+                                        <span>ICICI Bank</span>
                                     </div>
-                                    <div class="account-details">
-                                        <div class="account-type">Savings Account</div>
-                                        <div class="account-number">Account No: XXXXXXXX7890</div>
-                                    </div>
-                                </label>
-    
-                                <label class="account-option">
-                                    <div class="checkbox-container">
-                                        <input type="checkbox" name="account" checked>
-                                        <span class="checkbox-checkmark">
-                                            <span class="material-icons unchecked"></span>
-                                            <span class="material-icons checked"></span>
-                                        </span>
-                                    </div>
-                                    <div class="account-details">
-                                        <div class="account-type">Current Account</div>
-                                        <div class="account-number">Account No: XXXXXXXX3456</div>
-                                    </div>
-                                </label>
+                                    <button class="select-all">Select All</button> <!-- Added Select All button -->
+                                </div>
+                                <div class="account-options">
+                                    <label class="account-option">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" name="account" checked>
+                                            <span class="checkbox-checkmark">
+                                                <span class="material-icons unchecked"></span>
+                                                <span class="material-icons checked"></span>
+                                            </span>
+                                        </div>
+                                        <div class="account-details">
+                                            <div class="account-type">Savings Account</div>
+                                            <div class="account-number">Account No: XXXXXXXX7890</div>
+                                        </div>
+                                    </label>
+        
+                                    <label class="account-option">
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" name="account" checked>
+                                            <span class="checkbox-checkmark">
+                                                <span class="material-icons unchecked"></span>
+                                                <span class="material-icons checked"></span>
+                                            </span>
+                                        </div>
+                                        <div class="account-details">
+                                            <div class="account-type">Current Account</div>
+                                            <div class="account-number">Account No: XXXXXXXX3456</div>
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <button class="link-more">
-                            <i data-lucide="circle-plus"></i>
-                            <span>Link More Accounts</span>
-                        </button>
+                            <button class="link-more">
+                                <i data-lucide="circle-plus"></i>
+                                <span>Link More Accounts</span>
+                            </button>
+                        </div>
                     </main>
 
-                    <!-- Separate Bottom Drawer -->
+                    <!-- Bottom drawer stays the same but we'll update its button text dynamically -->
                     <div class="bottom-drawer">
                         <div class="scroll-indicator">
                             <i data-lucide="chevron-down"></i>
                         </div>
-                        <button class="proceed-button">PROCEED</button>
+                        <button class="proceed-button">Send OTP</button>
                         <div class="powered-by">
                             <span>powered by</span>
                             <img id="powered-logo" src="onemoney-logo.png" alt="OneMoney">

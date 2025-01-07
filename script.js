@@ -11,7 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
             poweredBy: "powered by",
             savingsAccount: "Savings Account",
             currentAccount: "Current Account",
-            accountNumber: "Account No: "
+            accountNumber: "Account No: ",
+            enterMobile: "Enter your mobile number",
+            linkAccounts: "Link all your accounts",
+            mobileSubtitle: "Enter your mobile number to discover linked accounts",
+            enterOtp: "Enter OTP",
+            sendOtp: "Send OTP",
+            verifyOtp: "Verify OTP",
+            pleaseEnterMobile: "Please enter your mobile number",
+            invalidMobile: "Please enter a valid 10-digit mobile number"
         },
         hi: {
             selectAccounts: "खाते चुनें",
@@ -23,7 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
             poweredBy: "powered by",
             savingsAccount: "बचत खाता",
             currentAccount: "चालू खाता",
-            accountNumber: "खाता संख्या: "
+            accountNumber: "खाता संख्या: ",
+            enterMobile: "अपना मोबाइल नंबर दर्ज करें",
+            linkAccounts: "अपने सभी खाते लिंक करें",
+            mobileSubtitle: "लिंक किए गए खातों को खोजने के लिए अपना मोबाइल नंबर दर्ज करें",
+            enterOtp: "OTP दर्ज करें",
+            sendOtp: "OTP भेजें",
+            verifyOtp: "OTP सत्यापित करें",
+            pleaseEnterMobile: "कृपया अपना मोबाइल नंबर दर्ज करें",
+            invalidMobile: "कृपया एक मान्य 10-अंकीय मोबाइल नंबर दर्ज करें"
         },
         ml: {
             selectAccounts: "അക്കൗണ്ടുകൾ തിരഞ്ഞെടുക്കുക",
@@ -35,7 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
             poweredBy: "powered by",
             savingsAccount: "സേവിംഗ്സ് അക്കൗണ്ട്",
             currentAccount: "കറന്റ് അക്കൗണ്ട്",
-            accountNumber: "അക്കൗണ്ട് നമ്പർ: "
+            accountNumber: "അക്കൗണ്ട് നമ്പർ: ",
+            enterMobile: "നിങ്ങളുടെ മൊബൈൽ നമ്പർ നൽകുക",
+            linkAccounts: "നിങ്ങളുടെ എല്ലാ അക്കൗണ്ടുകളും ലിങ്ക് ചെയ്യുക",
+            mobileSubtitle: "ലിങ്ക് ചെയ്ത അക്കൗണ്ടുകൾ കണ്ടെത്താൻ നിങ്ങളുടെ മൊബൈൽ നമ്പർ നൽകുക",
+            enterOtp: "OTP നൽകുക",
+            sendOtp: "OTP അയയ്ക്കുക",
+            verifyOtp: "OTP പരിശോധിക്കുക",
+            pleaseEnterMobile: "നിങ്ങളുടെ മൊബൈൽ നമ്പർ നൽകുക",
+            invalidMobile: "സാധുവായ 10-അക്ക മൊബൈൽ നമ്പർ നൽകുക"
         },
         te: {
             selectAccounts: "ఖాతాలను ఎంచుకోండి",
@@ -47,7 +71,15 @@ document.addEventListener('DOMContentLoaded', function() {
             poweredBy: "powered by",
             savingsAccount: "సేవింగ్స్ ఖాతా",
             currentAccount: "కరెంట్ ఖాతా",
-            accountNumber: "ఖాతా సంఖ్య: "
+            accountNumber: "ఖాతా సంఖ్య: ",
+            enterMobile: "మీ మొబైల్ నంబర్‌ను నమోదు చేయండి",
+            linkAccounts: "మీ అన్ని ఖాతాలను లింక్ చేయండి",
+            mobileSubtitle: "లింక് చేయబడిన ఖాతాలను కనుగొనడానికి మీ మొబైల్ నంబర్‌ను నమోదు చేయండి",
+            enterOtp: "OTP ని నమోదు చేయండి",
+            sendOtp: "OTP పంపండి",
+            verifyOtp: "OTP ని ధృవీకరించండి",
+            pleaseEnterMobile: "దయచేసి మీ మొబైల్ నంబర్‌ను నమోదు చేయండి",
+            invalidMobile: "దయచేసి చెల్లుబాటు అయ్యే 10-అంకెల మొబైల్ నంబర్‌ను నమోదు చేయండి"
         }
     };
 
@@ -63,6 +95,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         currentLang = lang;
         
+        // Update mobile input screen text
+        const mobileScreen = document.getElementById('mobile-input-screen');
+        mobileScreen.querySelector('h1').textContent = translations[lang].linkAccounts;
+        mobileScreen.querySelector('p').textContent = translations[lang].mobileSubtitle;
+        
+        // Update input placeholders
+        document.getElementById('phone-input').placeholder = translations[lang].enterMobile;
+        document.getElementById('otp-input').placeholder = translations[lang].enterOtp;
+        
+        // Update proceed button text based on current state
+        const proceedButton = document.querySelector('.proceed-button');
+        if (proceedButton.textContent.includes('OTP')) {
+            proceedButton.textContent = proceedButton.textContent.includes('Verify') ? 
+                translations[lang].verifyOtp : translations[lang].sendOtp;
+        }
+
         // Update all text elements
         document.getElementById('page-title').textContent = translations[lang].selectAccounts;
         document.querySelector('.subtitle').textContent = translations[lang].selectAccountsSubtitle;
@@ -474,5 +522,210 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Set the button text to "Unselect All" if all checkboxes are checked
         selectAllButton.textContent = allSelected ? 'Unselect All' : 'Select All';
+    });
+
+    // Screen Management
+    const phoneInput = document.getElementById('phone-input');
+    const proceedButton = document.querySelector('.proceed-button');
+    const mobileScreen = document.getElementById('mobile-input-screen');
+    const accountScreen = document.getElementById('account-selection-screen');
+    let currentScreen = 'mobile-input-screen';
+
+    // Set initial button text
+    proceedButton.textContent = 'Send OTP';
+    proceedButton.disabled = true;  // Initially disabled until phone number is entered
+
+    // Phone input validation
+    phoneInput.addEventListener('input', function(e) {
+        // Remove any non-numeric characters
+        this.value = this.value.replace(/\D/g, '');
+        
+        // Enable/disable proceed button based on input length
+        proceedButton.disabled = this.value.length !== 10;
+    });
+
+    // Get the back button reference
+    const backButton = document.querySelector('.back-btn');
+
+    // Hide back button initially since we start on the first screen
+    backButton.style.visibility = 'hidden';
+    backButton.style.opacity = '0';
+
+    // Function to hide OTP input with animation
+    function hideOtpInput() {
+        const otpInputGroup = document.querySelector('.otp-input-group');
+        const otpInput = document.getElementById('otp-input');
+        
+        // First remove the show class to trigger animation
+        otpInputGroup.classList.remove('show');
+        
+        // Wait for animation to complete before hiding completely
+        setTimeout(() => {
+            otpInputGroup.style.display = 'none';
+            otpInput.value = ''; // Reset OTP input value
+        }, 300); // Match this with your transition duration
+    }
+
+    // Function to switch screens with direction-aware animation
+    function switchScreen(fromScreen, toScreen, isForward = true) {
+        // First start the exit animation
+        fromScreen.classList.add(isForward ? 'slide-out-left' : 'slide-out-right');
+        
+        setTimeout(() => {
+            // After exit animation completes
+            fromScreen.dataset.active = 'false';
+            fromScreen.classList.remove(isForward ? 'slide-out-left' : 'slide-out-right');
+            
+            // Show new screen and start entrance animation
+            toScreen.style.display = 'block';
+            toScreen.dataset.active = 'true';
+            toScreen.classList.add(isForward ? 'slide-in-right' : 'slide-in-left');
+            
+            // Clean up entrance animation
+            setTimeout(() => {
+                toScreen.classList.remove(isForward ? 'slide-in-right' : 'slide-in-left');
+            }, 300);
+        }, 300);
+    }
+
+    // Update proceed button click handler (going forward)
+    proceedButton.addEventListener('click', function() {
+        if (currentScreen === 'mobile-input-screen') {
+            const otpInputGroup = document.querySelector('.otp-input-group');
+            
+            // If OTP input is not yet shown, show it instead of proceeding
+            if (!otpInputGroup.classList.contains('show')) {
+                otpInputGroup.style.display = 'flex';
+                otpInputGroup.offsetHeight;
+                otpInputGroup.classList.add('show');
+                this.textContent = 'Verify OTP';
+                return;
+            }
+            
+            // Switch screens with forward animation
+            switchScreen(
+                document.getElementById('mobile-input-screen'),
+                document.getElementById('account-selection-screen'),
+                true // forward direction
+            );
+            currentScreen = 'account-selection-screen';
+            
+            // Update phone number display
+            const phoneDisplay = document.querySelector('.phone-number');
+            const maskedNumber = phoneInput.value.replace(/(\d{6})(\d{4})/, 'XXXXXX$2');
+            phoneDisplay.innerHTML = `
+                +91 ${maskedNumber}
+                <button class="edit-phone">edit</button>
+            `;
+            
+            // Update proceed button text
+            this.textContent = 'Proceed';
+            this.disabled = false;
+
+            // Show back button
+            backButton.style.visibility = 'visible';
+            backButton.style.opacity = '1';
+        } else {
+            // Get selected accounts
+            const selectedAccounts = Array.from(document.querySelectorAll('.account-option input[type="checkbox"]:checked'))
+                .map(checkbox => {
+                    const accountOption = checkbox.closest('.account-option');
+                    return {
+                        type: accountOption.querySelector('.account-type').textContent,
+                        number: accountOption.querySelector('.account-number').textContent
+                    };
+                });
+
+            // Validate if any accounts are selected
+            if (selectedAccounts.length === 0) {
+                alert('Please select at least one account to proceed');
+                return;
+            }
+
+            // Here you would typically:
+            // 1. Show loading state
+            proceedButton.disabled = true;
+            proceedButton.textContent = 'Processing...';
+
+            // 2. Submit the data to your backend
+            console.log('Selected accounts:', selectedAccounts);
+            console.log('Phone number:', phoneInput.value);
+
+            // 3. Handle the response
+            // This would typically be an API call
+            // For now, just log the data
+        }
+    });
+
+    // Update back button handler (going backward)
+    backButton.addEventListener('click', function() {
+        if (currentScreen === 'account-selection-screen') {
+            // Switch screens with backward animation
+            switchScreen(
+                document.getElementById('account-selection-screen'),
+                document.getElementById('mobile-input-screen'),
+                false // backward direction
+            );
+            currentScreen = 'mobile-input-screen';
+            
+            // Update proceed button text
+            proceedButton.textContent = 'Send OTP';
+            proceedButton.disabled = phoneInput.value.length !== 10;
+
+            // Hide OTP input
+            hideOtpInput();
+
+            // Hide back button
+            backButton.style.visibility = 'hidden';
+            backButton.style.opacity = '0';
+        }
+    });
+
+    // Update edit phone click handler (going backward)
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('edit-phone')) {
+            // Switch screens with backward animation
+            switchScreen(
+                document.getElementById('account-selection-screen'),
+                document.getElementById('mobile-input-screen'),
+                false // backward direction
+            );
+            currentScreen = 'mobile-input-screen';
+            
+            // Update proceed button text
+            proceedButton.textContent = 'Send OTP';
+            proceedButton.disabled = phoneInput.value.length !== 10;
+
+            // Hide OTP input
+            hideOtpInput();
+
+            // Hide back button
+            backButton.style.visibility = 'hidden';
+            backButton.style.opacity = '0';
+        }
+    });
+
+    // Update the showError function to use translations
+    function showError(input, messageKey) {
+        removeError(input);
+        const message = translations[currentLang][messageKey];
+        // ... rest of showError function ...
+    }
+
+    // Update error handling to use translation keys
+    proceedButton.addEventListener('click', function() {
+        if (currentScreen === 'mobile-input-screen') {
+            if (!phoneInput.value) {
+                showError(phoneInput, 'pleaseEnterMobile');
+                return;
+            }
+            
+            if (!isValidIndianMobileNumber(phoneInput.value)) {
+                showError(phoneInput, 'invalidMobile');
+                return;
+            }
+            // ... rest of click handler ...
+        }
+        // ... rest of function ...
     });
 });
