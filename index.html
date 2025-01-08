@@ -122,8 +122,8 @@
                                     <i data-lucide="chevron-left"></i>
                                 </button>
                                 <div class="logo-container">
-                                    <img id="header-logo" src="upstock-logo.png" alt="Logo">
-                                    <span id="header-brand-name">Upstock</span>
+                                    <img id="header-logo" src="awebank-logo.png" alt="Logo">
+                                    <span id="header-brand-name">Awesome Bank</span>
                                 </div>
                             </div>
                             <div class="header-right-group">
@@ -161,8 +161,11 @@
                     <main class="main-content">
                         <!-- Screen 1: Mobile Number Input -->
                         <div class="screen" id="mobile-input-screen" data-active="true">
+                            <div class="top-image">
+                                <img id="header-image" src="h2.png" alt="Logo">
+                            </div>
                             <h1>Link all your accounts</h1>
-                            <p>Enter your mobile number to discover linked accounts</p>
+                            <p>Enter your mobile number to discover your linked accounts</p>
                             
                             <div class="phone-input-group">
                                 <div class="country-code">+91</div>
@@ -282,6 +285,28 @@
                                 <span>Link More Accounts</span>
                             </button>
                         </div>
+
+                        <!-- Add this inside main-content, after account-selection-screen -->
+                        <div class="screen" id="confirmation-screen" data-active="false">
+                            <h1>Selected Accounts</h1>
+                            <p class="subtitle">You have selected the following accounts to link:</p>
+                            
+                            <div class="confirmation-details">
+                                <div class="phone-confirmation">
+                                    <span class="label">Mobile Number:</span>
+                                    <span class="confirmed-phone"></span>
+                                </div>
+                                
+                                <div class="selected-accounts-list">
+                                    <!-- Will be populated dynamically -->
+                                </div>
+                            </div>
+                            
+                            <button class="edit-selection-btn">
+                                <i data-lucide="edit"></i>
+                                <span>Edit Selection</span>
+                            </button>
+                        </div>
                     </main>
 
                     <!-- Bottom drawer stays the same but we'll update its button text dynamically -->
@@ -289,7 +314,9 @@
                         <div class="scroll-indicator">
                             <i data-lucide="chevron-down"></i>
                         </div>
-                        <button class="proceed-button">Send OTP</button>
+                        <button class="proceed-button" disabled>
+                            Send OTP
+                        </button>
                         <div class="powered-by">
                             <span>powered by</span>
                             <img id="powered-logo" src="onemoney-logo.png" alt="OneMoney">
